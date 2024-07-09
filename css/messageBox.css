@@ -1,0 +1,21 @@
+#message {
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    /* animation-name:move;
+    animation-duration:3s; */
+    z-index: 4;
+
+}
+
+@keyframes move {
+    0% {
+        top: -7rem;
+    }
+    100% {
+        top: 2rem;
+    }
+
+}
