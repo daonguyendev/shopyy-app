@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Product</title>
+</head>
+
+<body>
+
+    <div class="add">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="getDataAddNewProduct()">ADD NEW PRODUCT</button>
+    </div>
+
+    <div id="content">
+   
+            <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button id="search-button" onclick="handleSearch()">Search</button>
+    </div>
+
+        <table id="display-list">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>description</th>
+                <th>quantity</th>
+                <th>avatar</th>
+                <th>color</th>
+                <th>size</th>
+                <th>sub category</th>
+                <th>Delete</th>
+                <th>Update</th>
+                <th>Views</th>
+            </tr>
+        </table>
+        <button id="load-more" onclick="productHome()">Xem Thêm</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ADD PRODUCT</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="edit-product-frame" src="create-product.html" style="width:100%; height:700px;"
+                        frameborder="0"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addnewProduct()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">UPDATE</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-body">
+                <iframe id="edit-product-frame" src="update-product.html" style="width:100%; height:700px;"
+                    frameborder="0"></iframe>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <script type="text/javascript" src="/js/product.js"></script>
+    <script type="text/javascript" src="/js/category.js"></script>
+    <script type="text/javascript" src="/js/create-product.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+
+</body>
+</html>
