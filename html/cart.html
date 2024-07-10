@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!--    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+    <style>
+        .buy-button-disabled{
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <div class="container mx-auto px-4 mt-24">
+        <h1 class="text-2x1 font-bold mb-4">Your Cart</h1>
+        <table id="cart-table" class="w-full mb-4">
+            <thead>
+            <tr>
+                <th>Select</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="cart-items">
+            </tbody>
+        </table>
+        <div id="cart-total" class="mb-4">
+            <strong>Total: $<span id="total-amount">0.00</span></strong>
+        </div>
+        <button id="buy-selected" class="bg-orange-500 text-white px-4 py-2 rounded mr-2 buy-button-disabled" disabled>Buy</button>
+        <button id="delete-all" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Delete All</button>
+        <a href="product.html" class="bg-blue-500 text-white px-4 py-2 rounded inline-block">Continue Shopping</a>
+    </div>
+
+    <script src="/shopyy-app/js/cart.js"></script>
+</body>
+</html>
