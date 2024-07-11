@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-import { getStorage, ref, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+import { getStorage, ref, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-storage.js"; // Đồng bộ phiên bản
 
 const firebaseConfig = {
   apiKey: "AIzaSyACJOLAWT9rC1JPvJ1ul6V03TF60Pbfn2g",

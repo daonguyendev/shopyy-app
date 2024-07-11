@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRODUCT ADMIN</title>
+    <title>CATEGORY ADMIN</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
@@ -218,29 +218,14 @@
 
                     <li class="nav-link active">
                         <div class="add">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">ADD NEW PRODUCT</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#exampleModal">ADD NEW CATEGORY</button>
                         </div>
                     </li>
 
-                    <li class="nav-link active">
-                        <button type="button" class="btn btn-outline-info">ADD NEW CATEGORY</button>
-                    </li>
 
-                    <li class="nav-link active">
-                        <button type="button" class="btn btn-outline-info">ADD SUB CATEGORY</button>
-                    </li>
 
-                    <li class="nav-link active">
-                        <button type="button" class="btn btn-outline-info">ADD NEW COLOR</button>
-                    </li>
 
-                    <li class="nav-link active">
-                        <button type="button" class="btn btn-outline-info">LOW TO HIGH PRICES</button>
-                    </li>
-
-                    <li class="nav-link active">
-                        <button type="button" class="btn btn-outline-info">PRICES HIGH TO LOW</button>
-                    </li>
                 </ul>
                 <hr>
                 <div class="my-3"></div>
@@ -258,346 +243,196 @@
 
                 </div>
                 <div id="content">
+
                     <table class="table" id="display-list">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Name</th>
-                                <th>Price</th>
-                                <th>description</th>
-                                <th>quantity</th>
-                                <th>img</th>
-                                <th>color</th>
-                                <th>size</th>
-                                <th>sub category</th>
+
                                 <th>Delete</th>
                                 <th>Update</th>
+
                             </tr>
                         </thead>
+                        <tbody>
 
                     </table>
 
-                    <button id="load-more" class="btn btn-primary me-3" onclick="productHome()">Xem Thêm</button>
+                    <button id="load-more" class="btn btn-primary me-3" onclick="categoryHome()">Xem Thêm</button>
                 </div>
             </div>
         </div>
+
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ADD PRODUCT</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">ADD CATEGORY</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-
                     <div class="container">
-                        <form id="addProduct">
+                        <form id="addCategory">
                             <div class="form-group">
-                                <label for="create-name">Name</label>
-                                <input type="text" class="form-control" id="create-name" placeholder="Name">
+                                <label for="create-category">Category</label>
+                                <input type="text" class="form-control" id="create-category" placeholder="Category">
                                 <span id="name_error" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
-                                <label for="create-price">Price</label>
-                                <input type="text" class="form-control" id="create-price" placeholder="Price">
-                                <span id="price_error" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="create-description">Description</label>
-                                <input type="text" class="form-control" id="create-description"
-                                    placeholder="Description">
-                                <span id="description_error" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="create-quantity">Quantity</label>
-                                <input type="text" class="form-control" id="create-quantity" placeholder="Quantity">
-                                <span id="quantity_error" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="create-image">Product Images</label>
-                                <input type="file" class="form-control" id="create-image">
-                                <span id="image_error" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="create-color">Color</label>
-                                <select class="form-control" id="create-color"></select>
-                                <span id="color_error" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="create-size">Size</label>
-                                <select class="form-control" id="create-size"></select>
-                                <span id="size_error" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="create-sub-category">Sub Category</label>
-                                <select class="form-control" id="create-sub-category"></select>
-                                <span id="sub_error" class="text-danger"></span>
-                            </div>
-
                         </form>
                     </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="addnewProduct()">Save</button>
+                        <button type="button" class="btn btn-primary" onclick="addnewCategory()">Save</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">UPDATE</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">UPDATE</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <form id="updateCategory">
+                                <input type="number" id="category-id" hidden>
+                                <div class="form-group">
+                                    <label for="update-name">Name</label>
+                                    <input type="text" class="form-control" id="update-name" placeholder="Name">
+                                    <span id="name_error" class="text-danger"></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="updateCategory()">Save changes</button>
+                    </div>
                 </div>
-                <div class="container">
-                    <form id="updateProduct">
-                        <div class="form-group">
-                            <label for="update-name">Name</label>
-                            <input type="text" class="form-control" id="update-name" placeholder="Name">
-                            <span id="name_error" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="update-price">Price</label>
-                            <input type="text" class="form-control" id="update-price" placeholder="Price">
-                            <span id="price_error" class="text-danger"></span>
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="update-description">Description</label>
-                            <input type="text" class="form-control" id="update-description" placeholder="Description">
-                            <span id="description_error" class="text-danger"></span>
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="update-quantity">Quantity</label>
-                            <input type="text" class="form-control" id="update-quantity" placeholder="Quantity">
-                            <span id="quantity_error" class="text-danger"></span>
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="update-image">Product Images</label>
-                            <input type="file" class="form-control" id="update-image">
-                            <span id="image_error" class="text-danger"></span>
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="update-color">Color</label>
-                            <select class="form-control" id="update-color"></select>
-                            <span id="color_error" class="text-danger"></span>
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="update-size">Size</label>
-                            <select class="form-control" id="update-size"></select>
-                            <span id="size_error" class="text-danger"></span>
-                        </div>
-            
-                        <div class="form-group">
-                            <label for="update-sub-category">Sub Category</label>
-                            <select class="form-control" id="update-sub-category"></select>
-                            <span id="sub_error" class="text-danger"></span>
-                        </div>
-            
-                    </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
             </div>
-          </div>
-        
 
-    </div>
-
-    <!-- Footer -->
-    <footer class="text-center text-lg-start bg-light text-muted">
-        <!-- Section: Social media -->
-
-        <!-- Section: Links  -->
-        <section class="">
-            <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
-                <div class="row mt-3">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i>Company name
-                        </h6>
-                        <p>
-                            Here you can use rows and columns to organize your footer content. Lorem ipsum
-                            dolor sit amet, consectetur adipisicing elit.
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Products
-                        </h6>
-                        <p>
-                            <a href="#!" class="text-reset">Angular</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">React</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Vue</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Laravel</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Useful links
-                        </h6>
-                        <p>
-                            <a href="#!" class="text-reset">Pricing</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Settings</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Orders</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Help</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                        <p>
-                            <i class="fas fa-envelope me-3"></i>
-                            info@example.com
-                        </p>
-                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-                    </div>
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-            </div>
-        </section>
-        <!-- Section: Links  -->
-
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            © 2021 Copyright:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
         </div>
-        <!-- Copyright -->
-    </footer>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
-    <script type="text/javascript" src="/js/product-admin.js"></script>
-    <script type="text/javascript" src="/js/product-home.js"></script>
-    <script type="text/javascript" src="/js/create-product.js"></script>
-    <script type="text/javascript" src="/js/update-product.js"></script>
-    <script type="text/javascript" src="/js/script.js"></script>
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <!-- Section: Social media -->
 
-    <script type="module" >
-        import { storage } from '/js/fireBaseConfig.js';
-        import {
-            ref,
-            uploadBytesResumable,
-            getDownloadURL
-        } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-        console.log("aaa")
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <i class="fas fa-gem me-3"></i>Company name
+                            </h6>
+                            <p>
+                                Here you can use rows and columns to organize your footer content. Lorem ipsum
+                                dolor sit amet, consectetur adipisicing elit.
+                            </p>
+                        </div>
+                        <!-- Grid column -->
 
-        $(document).ready(function () {
-            $("#create-image").on("change", (e) => {
-                console.log("A",e);
-                
-                const file = e.target.files[0];
-                console.log(file)
-                if (file) {
-                    const storageRef = ref(storage, 'images/' + file.name);
-                    const uploadTask = uploadBytesResumable(storageRef, file);
-                    uploadTask.on('state_changed',
-                        (snapshot) => {
-                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                        },
-                        (error) => {
-                            console.error('Upload failed:', error);
-                        },
-                        async () => {
-                            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                            localStorage.setItem("tempImage", JSON.stringify(downloadURL));
-                            console.log(downloadURL);
-                        }
-                    );
-                }
-            })
-        })
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Products
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Angular</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">React</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Vue</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Laravel</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
 
-        // $(document).ready(function () {
-        //     $("#update-image").on("change", (e) => {
-        //         const file = e.target.files[0];
-        //         if (file) {
-        //             const storageRef = ref(storage, 'images/' + file.name);
-        //             const uploadTask = uploadBytesResumable(storageRef, file);
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Useful links
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Pricing</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Settings</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Orders</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Help</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
 
-        //             uploadTask.on('state_changed',
-        //                 (snapshot) => {
-        //                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        //                 },
-        //                 (error) => {
-        //                     console.error('Upload failed:', error);
-        //                 },
-        //                 async () => {
-        //                     const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        //                     localStorage.setItem("tempImage", JSON.stringify(downloadURL));
-        //                     console.log(downloadURL);
-                            
-        //                 }
-        //             );
-        //         }
-        //     })
-        // })
-      
-    </script>
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i>
+                                info@example.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
 
-    <script>
-        function navigateToCategory() {
-            window.location.href = 'category.html';
-        }
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2021 Copyright:
+                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
 
-        function navigateToSubCategory() {
-            window.location.href = 'sub-category.html';
-        }
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+        <script type="text/javascript" src="/js/category.js"></script>
+        <script type="text/javascript" src="/js/create-category.js"></script>
+        <script type="text/javascript" src="/js/update-category.js"></script>
 
-        function navigateToColor() {
-            window.location.href = 'color.html';
-        }
-    </script>
-
+        <script>
+            function navigateToCategory() {
+                window.location.href = 'category.html';
+            }
     
+            function navigateToSubCategory() {
+                window.location.href = 'sub-category.html';
+            }
+    
+            function navigateToColor() {
+                window.location.href = 'color.html';
+            }
+        </script>
+        
 </body>
 
 </html>

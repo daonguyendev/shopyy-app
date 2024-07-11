@@ -184,14 +184,13 @@ function checkFormCreate() {
 
 function addnewProduct() {
   if (checkFormCreate) {
-
+    let tempImage = localStorage.getItem("tempImage");
+    if(tempImage) {}
       const name = $("#create-name").val();
       const price = $("#create-price").val();
       const description = $("#create-description").val();
       const quantity = $("#create-quantity").val();
-      // const image = $("#create-image")[0].files[0]
-      const image = JSON.parse(localStorage.getItem("tempImage"));
-
+      const image = JSON.parse(tempImage);
       const color = $("#create-color").val();
       const size = $("#create-size").val();
       const subCategory = $("#create-sub-category").val();
@@ -201,7 +200,7 @@ function addnewProduct() {
         price: price,
         description: description,
         quantity: quantity,
-        image: image,
+        img: image,
         color: color,
         size: size,
         subCategory: subCategory,

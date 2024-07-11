@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Đăng nhập tài khoản | Shopyy CodeGym</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/auth.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<nav>
+    <h1>Đăng nhập</h1>
+</nav>
+<div class="my-form__wrapper">
+    <div class="login-welcome-row">
+        <h1>Đăng nhập &#x1F44F;</h1>
+    </div>
+    <form class="my-form">
+        <div class="text-field">
+            <label for="username">Username:</label>
+            <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Username"
+                    required
+            >
+        </div>
+        <div class="text-field">
+            <label for="password">Password:</label>
+            <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    title="Minimum 6 characters at least 1 Alphabet and 1 Number"
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                    required
+            />
+            <span class="material-symbols-outlined eye-icon"
+                  onclick="togglePasswordVisibility()">
+              visibility
+            </span>
+        </div>
+        <div class="divider">
+            <div class="divider-line"></div>
+            Hoặc
+            <div class="divider-line"></div>
+        </div>
+
+        <div id="auth-btns">
+            <img src="/images/google-btn.svg" alt="Google Sign Up"/>
+            <img src="/images/facebook-btn.svg" alt="Facebook Sign Up"/>
+        </div>
+
+        <input type="button" onclick="auth()" class="my-form__button" value="Đăng nhập">
+        <div class="my-form__actions">
+            <div class="my-form__row">
+                <span>Bạn đã quên mật khẩu của bạn?</span>
+                <a href="#" title="Reset Password">
+                    Lấy lại mật khẩu
+                </a>
+            </div>
+            <div class="my-form__signup">
+                <p>Bạn mới biết đến Shopyy? </p>
+                <a href="#" title="Đăng ký" data-toggle="modal" data-target="#exampleModal" onclick="getDataRegister()">
+                    Đăng ký
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ĐĂNG KÝ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="container">
+                <form id="register">
+                    <div class="form-group">
+                        <label for="create-name">Full Name</label>
+                        <input type="text" class="form-control" id="create-name" placeholder="Full Name">
+                        <span id="name_error" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="create-username">Username</label>
+                        <input type="text" class="form-control" id="create-username" placeholder="Username">
+                        <span id="username_error" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="create-password">Password</label>
+                        <input type="password" class="form-control" id="create-password" placeholder="Password">
+                        <span id="password_error" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="create-email">Email</label>
+                        <input type="text" class="form-control" id="create-email" placeholder="Email">
+                        <span id="email_error" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="create-phone">Phone</label>
+                        <input type="text" class="form-control" id="create-phone" placeholder="Phone">
+                        <span id="phone_error" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="create-gender">Gender</label>
+                        <select class="form-control" id="create-gender" name="gender">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="create-dob">Date of Birth</label>
+                        <input type="date" class="form-control" id="create-dob">
+                        <span id="dob_error" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="create-avatar">Avatar</label>
+                        <input type="file" class="form-control" id="create-avatar">
+                        <span id="avatar_error" class="text-danger"></span>
+                    </div>
+
+                </form>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="register()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/auth.js"></script>
+</body>
+</html>
