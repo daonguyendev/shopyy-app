@@ -33,7 +33,7 @@ function auth() {
             }
         },
         success: function (data) {
-            localStorage.setItem("user", JSON.stringify(data));
+            localStorage.setItem("token", data.token);
             localStorage.setItem("username", username);
             updateNavLinks();
             window.location.href = "product.html"
@@ -130,7 +130,7 @@ function checkFormRegister() {
             valid = false;
             username_error.innerHTML = "Username cannot be blank";
         } else {
-
+            username_error.innerHTML = "";
         }
 
         if (password.value.trim() === "") {
@@ -186,12 +186,12 @@ function checkFormRegister() {
         }
 
         if (valid) {
-            register();
+            doRegister();
         }
     // });
 }
 
-function register() {
+function doRegister() {
     if (checkFormRegister()) {
         const name = $("#create-name").val();
         const username = $("#create-username").val();
