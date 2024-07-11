@@ -1,5 +1,4 @@
-// import { messageBox, SUCCESS, ERROR } from "./messageBox.js";
-// import { successHandler } from './product.js';
+
 
 $(document).ready(() => {
   $("#exampleModal").on("show.bs.modal", getDataAddNewProduct);
@@ -7,13 +6,13 @@ $(document).ready(() => {
 });
 
 function getDataAddNewProduct() {
-  $("#addProductModal").modal("show");
-  loadColors();
-  loadSizes();
-  loadSubCategories();
+  $("#exampleModal").modal("show");
+  loadColor();
+  loadSize();
+  loadSubCategorie();
 }
 
-function loadSubCategories() {
+function loadSubCategorie() {
   $.ajax({
     url: `http://localhost:8080/api/subCategory`,
     type: "GET",
@@ -41,7 +40,7 @@ function loadSubCategories() {
   });
 }
 
-function loadColors() {
+function loadColor() {
   $.ajax({
     url: `http://localhost:8080/api/colors`,
     type: "GET",
@@ -66,7 +65,7 @@ function loadColors() {
   });
 }
 
-function loadSizes() {
+function loadSize() {
   $.ajax({
     url: `http://localhost:8080/api/sizes`,
     type: "GET",
@@ -180,15 +179,19 @@ function checkFormCreate() {
   });
 }
 
+
+
+
 function addnewProduct() {
   if (checkFormCreate) {
-    let tempImage = localStorage.getItem("tempImage");
-    if (tempImage) {
+
       const name = $("#create-name").val();
       const price = $("#create-price").val();
       const description = $("#create-description").val();
       const quantity = $("#create-quantity").val();
-      const image = JSON.parse(tempImage);
+      // const image = $("#create-image")[0].files[0]
+      const image = JSON.parse(localStorage.getItem("tempImage"));
+
       const color = $("#create-color").val();
       const size = $("#create-size").val();
       const subCategory = $("#create-sub-category").val();
@@ -212,19 +215,17 @@ function addnewProduct() {
         },
         type: "POST",
         url: "http://localhost:8080/api/products",
-        data: JSON.stringify(formData),
+        data: JSON.stringify(formData),        
         success: function (res) {
           $("#exampleModal").click();
           alert(res?.message);
-          window.location.href = "http://127.0.0.1:5500/html/product.html";
-          localStorage.removeItem("tempImage");
+          location.reload();
         },
         error: function (xhr, status, error) {
-          console.error(xhr.responseText);
+          console.error(xhr.responseText, "lỗi gì");
         },
       });
-    } else {
-      alert("No image found in localStorage");
-    }
   }
 }
+
+
