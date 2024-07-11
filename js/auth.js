@@ -33,11 +33,11 @@ function auth() {
             }
         },
         success: function (data) {
-            localStorage.setItem("user", JSON.stringify(data));
+            console.log(data)
+            localStorage.setItem("token", JSON.stringify(data));
             localStorage.setItem("username", username);
             updateNavLinks();
-            window.location.href = "product.html"
-
+            // window.location.href = "product.html"
         }
     });
 }
