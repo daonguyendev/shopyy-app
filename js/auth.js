@@ -36,8 +36,7 @@ function auth() {
             localStorage.setItem("token", data.token);
             localStorage.setItem("username", username);
             updateNavLinks();
-            window.location.href = "product.html"
-
+            // window.location.href = "product.html"
         }
     });
 }
