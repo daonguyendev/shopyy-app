@@ -102,7 +102,7 @@ function productHome(search = "") {
           }
 
           currentPage++;
-          // attachEventListenersProductList()
+          // attachEventListenersProductList();
       },
       error: function (xhr, status, error) {
           console.error("Error while fetching products:", error);

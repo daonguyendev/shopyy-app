@@ -53,7 +53,7 @@ $(document).ready(function () {
                   <td>${product.price}</td>
                   <td class="d-flex col-5 justify-content-center btn btn-outline-primary"><img src="${product.img}" width="100"></td>
                     <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="deleteProduct(${product.id})">BUY</button></td>
-                    <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="updateProduct(${product.id})">SEE DETAILS</button></td>
+                    <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="getProductDetail(${product.id})">SEE DETAILS</button></td>
               </tr>`;
   }
   
@@ -64,7 +64,7 @@ $(document).ready(function () {
                 <td>${product.price}</td>
                 <td class="d-flex col-5 justify-content-center"><img src="${product.img}" width="100"></td>
                 <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="deleteProduct(${product.id})">BUY</button></td>
-                <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="updateProduct(${product.id})">SEE DETAILS</button></td>
+                <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="getProductDetail(${product.id})">SEE DETAILS</button></td>
             </tr>`;
 }
   function handleSearch() {
@@ -85,7 +85,7 @@ $(document).ready(function () {
                     <td>${product.price}</td>
                     <td class="d-flex col-5 justify-content-center btn btn-outline-primary"><img src="${product.image}" alt="Product Image" style="width: 50px; height: 50px;"></td>
                     <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="deleteProduct(${product.id})">BUY</button></td>
-                    <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="updateProduct(${product.id})">SEE DETAILS</button></td>
+                    <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="getProductDetail(${product.id})">SEE DETAILS</button></td>
                 </tr>`;
           table.append(row);
         });
@@ -115,7 +115,7 @@ function arrangePrice(order) {
                       <td>${product.price}</td>
                       <td class="d-flex col-5 justify-content-center btn btn-outline-primary"><img src="${product.image}" alt="Product Image" style="width: 50px; height: 50px;"></td>
                       <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="deleteProduct(${product.id})">BUY</button></td>
-                      <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="updateProduct(${product.id})">SEE DETAILS</button></td>
+                      <td><button class="d-flex col-5 align-items-center btn btn-outline-secondary" onclick="getProductDetail(${product.id})">SEE DETAILS</button></td>
                   </tr>`;
             table.append(row);
           });
@@ -124,4 +124,9 @@ function arrangePrice(order) {
             console.error('Error fetching products:', error);
         }
     });
+}
+
+function getProductDetail(id) {
+  localStorage.setItem("productId", id);
+  window.location.href = "http://127.0.0.1:5500/html/product-detail.html";
 }

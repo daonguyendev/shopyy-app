@@ -1,7 +1,8 @@
 function showAllProductDetail() {
+    let id = Number(localStorage.getItem("productId"));
     $.ajax({
         type: "GET",
-        url: `http://localhost:8080/api/products/3`,
+        url: `http://localhost:8080/api/products/${id}`,
         success: function (data) {
             console.log(data);
             let item = data; // Assign the response data to item
