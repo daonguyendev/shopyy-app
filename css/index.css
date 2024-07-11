@@ -1,0 +1,57 @@
+#display-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#display-list th, #display-list td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#display-list th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-align: center;
+}
+
+#display-list tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#display-list tr:hover {
+    background-color: #e9ecef;
+}
+
+#load-more {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+#load-more:hover {
+    background-color: #218838;
+}
+
+.btn {
+    display: inline-block;
+    margin: 0;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #e9ecef;
+}

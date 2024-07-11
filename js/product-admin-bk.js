@@ -4,6 +4,9 @@ $(document).ready(function(){
   loadColors();
   loadSizes();
   loadSubCategories();
+  loadColor();
+  loadSize();
+  loadSubCategorie();
 });
 
 function loadColors() {
@@ -216,6 +219,8 @@ function productHome(search = "") {
   });
 }
 
+
+
 function deleteProduct(id) {
   $.ajax({
     headers: {
@@ -226,101 +231,49 @@ function deleteProduct(id) {
     url: `http://localhost:8080/api/products/${id}`,
     success: function () {
       $(`#product-${id}`).remove();
-      window.location.href = "http://127.0.0.1:5500/html/product.html";
+      location.reload();
       alert("The product has been successfully deleted");
     },
   });
 }
 
 function handleSearch() {
-  const keyword = $("#search-input").val();
-  currentPage = 0; 
-  searchProducts(keyword); 
-  loadProductsSortedBySubCategory(keyword)
-}
-
-function loadMore() {
-  const keyword = $("#search-input").val();
-  searchProducts(keyword); 
-}
-
-function searchProducts(keyword) {
+  const query = $('#search-input').val();
   $.ajax({
+      headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+      },
       type: "GET",
-      url: `http://localhost:8080/api/products/search?keyword=${keyword}&page=${currentPage}&size=${pageSize}`,
+      url: `http://localhost:8080/api/products/search?keyword=${query}`,
       success: function (data) {
-          if (currentPage === 0) {
-              $("#display-list").find("tr:gt(0)").remove(); 
-          }
-          let content = "";
-          data.content.forEach((product) => {
+          const table = $('#display-list');
+          table.find("tr:gt(0)").remove();
+          data.content.forEach(product => {
+
               const colors = product.colors && product.colors.length > 0 ? product.colors.map(color => color.colorName).join(", ") : "";
               const sizes = product.sizes && product.sizes.length > 0 ? product.sizes.map(size => size.sizeName).join(", ") : "";
               const subCategory = product.subCategory ? product.subCategory.name : "";
 
-              content += `<tr>
-                              <td>${product.name}</td>
-                              <td>${product.price}</td>
-                              <td>${product.description}</td>
-                              <td>${product.quantity}</td>
-                              <td>${colors}</td>
-                              <td>${sizes}</td>
-                              <td>${subCategory}</td>
-                          </tr>`;
+              const row = `<tr>
+                  <td>${product.name}</td>
+                  <td>${product.price}</td>
+                  <td>${product.description}</td>
+                  <td>${product.quantity}</td>
+                  <td><img src="${product.image}" alt="Product Image" style="width: 50px; height: 50px;"></td>
+                  <td>${colors}</td>
+                  <td>${sizes}</td>
+                  <td>${subCategory}</td>
+                  <td><button onclick="deleteProduct(${product.id})">Delete</button></td>
+                  <td><button onclick="updateProduct(${product.id})">Update</button></td>
+              </tr>`;
+              table.append(row);
           });
-          $("#display-list").append(content);
-          currentPage++;
-
-          if (currentPage >= data.totalPages) {
-              $("#load-more").hide(); 
-          } else {
-              $("#load-more").show(); 
-          }
       },
       error: function (xhr, status, error) {
-          console.error("Error while fetching products:", error);
-      }
+          console.error(xhr.responseText);
+      },
   });
 }
 
-function loadProductsSortedBySubCategory() {
-  $.ajax({
-      type: "GET",
-      url: `http://localhost:8080/api/products/by-subcategory?page=${currentPage}&size=${pageSize}`,
-      success: function (data) {
-          if (currentPage === 0) {
-              $("#display-list").find("tr:gt(0)").remove();
-          }
-          let content = "";
-          data.content.forEach((product) => {
-              const colors = product.colors && product.colors.length > 0 ? product.colors.map(color => color.colorName).join(", ") : "";
-              const sizes = product.sizes && product.sizes.length > 0 ? product.sizes.map(size => size.sizeName).join(", ") : "";
-              const subCategory = product.subCategory ? product.subCategory.name : "";
-              
-              content += `<tr>
-                              <td>${product.name}</td>
-                              <td>${product.price}</td>
-                              <td>${product.description}</td>
-                              <td>${product.quantity}</td>
-                              <td>${colors}</td>
-                              <td>${sizes}</td>
-                              <td>${subCategory}</td>
-                          </tr>`;
-          });
-          $("#display-list").append(content);
-          currentPage++;
-          if (currentPage >= data.totalPages) {
-              $("#load-more").hide();
-          } else {
-              $("#load-more").show();
-          }
-      },
-      error: function (xhr, status, error) {
-          console.error("Error while fetching products:", error);
-      }
-  });
-}
 
-function loadMore() {
-  loadProductsSortedBySubCategory();
-}

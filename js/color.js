@@ -5,22 +5,22 @@ async function successHandler() {
   try {
     const data = await $.ajax({
       type: "GET",
-      url: "http://localhost:8080/api/category",
+      url: "http://localhost:8080/api/colors",
     });
-    categoryHome();
+    categoryColor();
   } catch (error) {
     console.error("Error while fetching categories:", error);
   }
 }
 
-function colorHome(search = "") {
+function categoryColor(search = "") {
   $.ajax({
     type: "GET",
     url: `http://localhost:8080/api/colors?page=${currentPage}&size=${pageSize}&search=${search}`,
     success: function (data) {
       let content = "";
-      data.content.forEach((color) => {
-        content += getColor(color);
+      data.content.forEach((category) => {
+        content += getCategory(category);
       });
 
       // Thêm nội dung mới vào danh sách hiện tại
@@ -41,11 +41,11 @@ function colorHome(search = "") {
   });
 }
 
-function getCategory(category) {
+function getColor(color) {
   return `<tr>
-                <td>${category.name}</td>
-                <td><button class="d-flex col-5 justify-content-end btn btn-outline-success" class="deleteCategory" onclick="deleteCategory(${category.id})">Delete</button></td>
-                <td><button class="d-flex col-5 justify-content-around btn btn-outline-warning" type="button" data-toggle="modal" data-target="#exampleModalLong" onclick='showFormUpdate(${category.id})'>Update</button></td>
+                <td>${color.name}</td>
+                <td><button class="d-flex col-5 justify-content-end btn btn-outline-success" class="deleteCategory" onclick="deleteCategory(${color.id})">Delete</button></td>
+                <td><button class="d-flex col-5 justify-content-around btn btn-outline-warning" type="button" data-toggle="modal" data-target="#exampleModalLong" onclick='showFormUpdate(${color.id})'>Update</button></td>
             </tr>`;
 }
 
